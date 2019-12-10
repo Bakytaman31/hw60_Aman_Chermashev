@@ -25,7 +25,10 @@ class Remote extends Component {
         fetch(url, {
             method: 'post',
             body: data,
-        })
+        }).then(() => {
+            this.setState({author: '', message: ''});
+        });
+
     };
 
     render() {
@@ -37,7 +40,8 @@ class Remote extends Component {
                         <input type="text"
                                className="form-control"
                                id="formGroupExampleInput"
-                               onChange={event => this.getAuthor(event)}/>
+                               onChange={event => this.getAuthor(event)}
+                               value={this.state.author}/>
                     </div>
 
                     <div className="form-group">
@@ -46,7 +50,8 @@ class Remote extends Component {
                             type="text"
                             className="form-control"
                             id="formGroupExampleInput2"
-                            onChange={event => this.getMessage(event)}/>
+                            onChange={event => this.getMessage(event)}
+                            value={this.state.message}/>
                     </div>
                     <button type="button" className="btn btn-primary" onClick={this.postMessage}>Send</button>
                 </form>

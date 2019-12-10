@@ -16,7 +16,6 @@ class Messages extends Component {
                 url: 'http://146.185.154.90:8000/messages'
             })
                 .then(response => {
-                    console.log(this.state.messages);
                     this.setState({messages: response.data})
                 })
         } ,2000);
@@ -24,7 +23,6 @@ class Messages extends Component {
     }
 
     render() {
-        console.log(this.state.messages);
         return (
             <div className="Messages" key="Messages">
                 {this.state.messages.map(messages => {
